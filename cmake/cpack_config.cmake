@@ -33,14 +33,14 @@
 # cmake/cpack_config.cmake --
 #   Configuration required by cpack. Includes the CPack module as well.
 
-set(CPACK_PACKAGE_NAME "</project/>")
-set(CPACK_PACKAGE_FILE_NAME "</project/>-${PROJECT_VERSION}-${CMAKE_SYSTEM_NAME}-${PACKAGE_ARCH}")
-set(CPACK_SOURCE_PACKAGE_FILE_NAME "</project/>-${PROJECT_VERSION}-${CMAKE_SYSTEM_NAME}-${PACKAGE_ARCH}")
+set(CPACK_PACKAGE_NAME "dab")
+set(CPACK_PACKAGE_FILE_NAME "dab-${PROJECT_VERSION}-${CMAKE_SYSTEM_NAME}-${PACKAGE_ARCH}")
+set(CPACK_SOURCE_PACKAGE_FILE_NAME "dab-${PROJECT_VERSION}-${CMAKE_SYSTEM_NAME}-${PACKAGE_ARCH}")
 set(CPACK_THREADS 0)
-set(CPACK_PACKAGE_VENDOR "</name/> <</email/>>")
-set(CPACK_PACKAGE_CONTACT "</name/> <</email/>>")
-set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "</summary/>")
-set(CPACK_PACKAGE_DESCRIPTION "</description/>")
+set(CPACK_PACKAGE_VENDOR "bodand <bodand@proton.me>")
+set(CPACK_PACKAGE_CONTACT "bodand <bodand@proton.me>")
+set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Database Accesss Bridge")
+set(CPACK_PACKAGE_DESCRIPTION "A cross-platform cross-database relational data access layer backend for interacting with different database engines.")
 set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/LICENSE.adoc")
 set(CPACK_RESOURCE_FILE_README "${CMAKE_CURRENT_SOURCE_DIR}/README.adoc")
 set(CPACK_SOURCE_IGNORE_FILES

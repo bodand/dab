@@ -1,8 +1,8 @@
-= </project/>
+= dab
 :icons: font
 
-</summary/>
+Database Accesss Bridge
 
 == Description
 
-</description/>
+A cross-platform cross-database relational data access layer backend for interacting with different database engines.

@@ -40,10 +40,10 @@ linux_deploy_commands: &LINUX_DEPLOY_TEMPLATE_TASK
     - cd ${BUILD_PATH} && cpack -G RPM .
 
   elevate_package_name_into_env_script:
-    - echo "PKG_NAME=</project/>-${PROJECT_VER}-`uname`-`uname -m`" > ${CIRRUS_ENV}
+    - echo "PKG_NAME=dab-${PROJECT_VER}-`uname`-`uname -m`" > ${CIRRUS_ENV}
 
   generate_signing_keys_script:
-    - cd ${BUILD_PATH} && signify-openbsd -G -nc "</project/> ${PROJECT_VER} package distribution" -s "${PKG_NAME}.sec" -p "${PKG_NAME}.pub"
+    - cd ${BUILD_PATH} && signify-openbsd -G -nc "dab ${PROJECT_VER} package distribution" -s "${PKG_NAME}.sec" -p "${PKG_NAME}.pub"
 
   sign_packages_script:
     - cd ${BUILD_PATH}

@@ -5,11 +5,15 @@ BasedOnStyle: LLVM
 
 AccessModifierOffset: -4
 AlignAfterOpenBracket: Align
-AlignConsecutiveAssignments: false
+AlignConsecutiveAssignments:
+  Enabled: false
 AlignOperands: Align
-AlignConsecutiveBitFields: false
-AlignConsecutiveDeclarations: false
-AlignConsecutiveMacros: false
+AlignConsecutiveBitFields:
+  Enabled: false
+AlignConsecutiveDeclarations:
+  Enabled: false
+AlignConsecutiveMacros:
+  Enabled: false
 AlignEscapedNewlines: Left
 AlignTrailingComments: true
 AllowAllArgumentsOnNextLine: false
@@ -26,6 +30,7 @@ AlwaysBreakAfterReturnType: All
 AlwaysBreakTemplateDeclarations: 'Yes'
 AlwaysBreakAfterDefinitionReturnType: All
 AlwaysBreakBeforeMultilineStrings: false
+PackConstructorInitializers: NextLine
 BinPackArguments: false
 BinPackParameters: false
 BitFieldColonSpacing: After
@@ -80,7 +85,7 @@ IncludeCategories:
   - Regex: ^<[Ww]indows.h>$
     Priority: 998
   # other WinAPI headers #
-  - Regex: ^<(win.+|shlobj|tchar|shell.+|ws2.+|wow64.+)\.h>$
+  - Regex: ^<(win.+|shlobj|tchar|shell.+|ws2.+|wow64.+|KnownFolders|rpc)\.h>$
     Priority: 999
   # C headers #
   - Regex: ^<.*\.h>$

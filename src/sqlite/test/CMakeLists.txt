@@ -1,4 +1,4 @@
-# cg3 project
+# dab project
 #
 # Copyright (c) 2023 András Bodor <bodand@pm.me>
 # All rights reserved.
@@ -28,38 +28,22 @@
 # OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
-# Originally created: 2023-04-29.
+# Originally created: 2023-09-29.
 #
-# cmake/generate_lto.cmake --
-#  Configuration for LTO
+# src/sqlite/test/CMakeLists.txt --
+#   CMake module handling the test-code for the SQLite DAB backend.
 
-include(CheckIPOSupported)
+add_covered_test(NAME "Dab.Sqlite.Tests" CATCH_OWNMAIN
+                 SOURCES
+                 main.cxx
+                 connection_string_builder.test.cxx
+                 connection.test.cxx
+                 database_creation.test.cxx
+                 dql.test.cxx
+                 ddl.test.cxx
+                 LIBRARIES magic_enum::magic_enum Dab.Core Dab.Sqlite)
 
-option(dab_FORBID_LTO "Instruct the build-system to never enable LTO [No]" No)
-
-function(generate_lto _tgt)
-    message(CHECK_START "Checking for LTO support")
-    if (dab_FORBID_LTO)
-        message(CHECK_FAIL "forbidden")
-        return()
-    endif ()
-
-    if (NOT CMAKE_BUILD_TYPE MATCHES [[Rel]])
-        message(CHECK_FAIL "skip: not in release mode")
-        return()
-    endif ()
-
-    check_ipo_supported(RESULT HAVE_LTO)
-    if (NOT HAVE_LTO)
-        message(CHECK_FAIL "failed")
-    endif ()
-    message(CHECK_PASS "found")
-
-    set_target_properties("${_tgt}" PROPERTIES
-                          INTERFACE_INTERPROCEDURAL_OPTIMIZATION TRUE)
-    if (MSVC)
-        set_target_properties("${_tgt}" PROPERTIES
-                              INTERFACE_COMPILE_OPTIONS "/GL"
-                              INTERFACE_LINK_FLAGS "/LTCG:incremental")
-    endif ()
-endfunction()
+add_custom_command(TARGET "Dab.Sqlite.Tests" POST_BUILD
+                   COMMAND "${CMAKE_COMMAND}" -E "copy_if_different"
+                   "${CMAKE_CURRENT_SOURCE_DIR}/test.db"
+                   "${CMAKE_CURRENT_BINARY_DIR}")

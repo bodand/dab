@@ -1,8 +1,47 @@
 {
-  "name": "</project/>",
-  "version-semver": "0.1.0",
-  "license": "</license/>",
+  "name": "dab",
+  "version-semver": "0.0.1",
+  "license": "BSD-3-Clause",
   "maintainers": [
-    "</name/> (</email/>)"
+    "András Bodor (bodand@proton.me)"
+  ],
+  "features": {
+    "dab-core": {
+      "description": "The core library for handling common requirements for all databases.",
+      "dependencies": [
+        "cpp-async",
+        "tl-generator",
+        "fmt"
+      ]
+    },
+    "db-sqlite": {
+      "description": "DAB Database backend for SQLite databases.",
+      "dependencies": [
+        "sqlite3",
+        "boost-spirit",
+        {
+          "name": "dab",
+          "default-features": false,
+          "features": [
+            "dab-core"
+          ]
+        }
+      ]
+    }
+  },
+  "default-features": [
+    "dab-core",
+    "db-sqlite"
+  ],
+  "dependencies": [
+    "catch2",
+    "fakeit",
+    "magic-enum"
+  ],
+  "overrides": [
+    {
+      "name": "fakeit",
+      "version": "2.3.0"
+    }
   ]
 }
